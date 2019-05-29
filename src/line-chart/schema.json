@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsHighchartsLinechart",
+  "title": "Hicharts Linechart Options Schema",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path to create the component.",
+      "visible": false
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the component.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Please enter name of the component : "
+    },
+    "chartType": {
+      "type": "string",
+      "description": "Type of the Chart.",
+      "default": "line",      
+      "x-prompt": {
+        "message": "Choose type of the chart:",
+        "type": "list",
+        "items": [
+          { "value": "line", "label": "Line" },
+          { "value": "bar", "label": "Bar" },
+          { "value": "pie", "label": "Pie" },
+          { "value": "column", "label": "Column" },
+          { "value": "spline", "label": "Spline" }
+        ]
+      }
+    },
+    "inlineStyle": {
+      "description": "Specifies if the style will be in the ts file.",
+      "type": "boolean",
+      "alias": "s"
+    },
+    "inlineTemplate": {
+      "description": "Specifies if the template will be in the ts file.",
+      "type": "boolean",
+      "alias": "t"
+    },
+    "viewEncapsulation": {
+      "description": "Specifies the view encapsulation strategy.",
+      "enum": ["Emulated", "None"],
+      "type": "string",
+      "alias": "v"
+    },
+    "changeDetection": {
+      "description": "Specifies the change detection strategy.",
+      "enum": ["Default", "OnPush"],
+      "type": "string",
+      "default": "Default",
+      "alias": "c"
+    },
+    "prefix": {
+      "type": "string",
+      "format": "html-selector",
+      "description": "The prefix to apply to generated selectors.",
+      "alias": "p"
+    },
+    "styleext": {
+      "description": "The file extension to be used for style files.",
+      "type": "string"
+    },
+    "spec": {
+      "type": "boolean",
+      "description": "Specifies if a spec file is generated."
+    },
+    "flat": {
+      "type": "boolean",
+      "description": "Flag to indicate if a dir is created.",
+      "default": false
+    },
+    "skipImport": {
+      "type": "boolean",
+      "description": "Flag to skip the module import.",
+      "default": false
+    },
+    "skipPackageJson": {
+      "type": "boolean",
+      "default": false,
+      "description": "Do not add hichart dependencies to package.json (e.g., --skipPackageJson)"
+    },    
+    "NpmInstallTask": {
+      "type": "boolean",
+      "default": false,
+      "description": "NPM Install Task",
+      "x-prompt": {
+        "message": "Do you want to run 'Npm Install':",
+        "type": "list",
+        "items": [
+          { "value": false, "label": "Yes" },
+          { "value": true, "label": "No" }
+        ]
+      }
+    },
+    "selector": {
+      "type": "string",
+      "format": "html-selector",
+      "description": "The selector to use for the component."
+    },
+    "module":  {
+      "type": "string",
+      "description": "Allows specification of the declaring module.",
+      "alias": "m"
+    },
+    "export": {
+      "type": "boolean",
+      "default": false,
+      "description": "Specifies if declaring module exports the component."
+    },
+    "entryComponent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Specifies if the component is an entry component of declaring module."
+    }
+  },
+  "required": ["name"]
+}

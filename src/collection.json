@@ -1,0 +1,14 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "line-chart": {
+      "description": "A blank schematic.",
+      "factory": "./line-chart/index"
+    },
+    "ng-add": {
+      "factory": "./ng-add/index",
+      "description": "Add schematic",
+      "schema": "./line-chart/schema.json"
+    }
+  }
+}
